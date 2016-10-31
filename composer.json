@@ -1,0 +1,26 @@
+{
+    "name": "flug/websocket-server-app",
+    "description": "An app weboscket server implemented",
+    "type": "project",
+    "require": {
+        "symfony/console": "^3.1",
+        "cboden/ratchet": "^0.3.5",
+        "symfony/event-dispatcher": "^3.1",
+        "monolog/monolog": "^1.21"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Flug",
+            "email": "flugv1@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev", 
+    "autoload": {
+        "psr-4" : {"Clooder\\": "src/"},
+        "classmap": ["app/ConsoleKernel.php"]
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.1"
+    }
+}
