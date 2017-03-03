@@ -45,25 +45,31 @@ class MessageEvent extends Event
         if ($this->isJson($this->message)) {
             return json_decode($this->message);
         }
-        
+
         return $this->message;
     }
-    
+
     /**
      * @param mixed $message
+     *
      * @return MessageEvent
      */
     public function setMessage($message)
     {
         $this->message = $message;
-        
+
         return $this;
     }
-    
+
     private function isJson($string)
     {
         json_decode($string);
-        
-        return (json_last_error() == JSON_ERROR_NONE);
+
+        return json_last_error() == JSON_ERROR_NONE;
+    }
+
+    public function send()
+    {
+        $this->getConnection()->send($this->message);
     }
 }
