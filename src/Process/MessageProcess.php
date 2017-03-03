@@ -1,8 +1,5 @@
 <?php
-
-
 namespace Clooder\Process;
-
 
 use Clooder\Event\CloseEvent;
 use Clooder\Event\ErrorEvent;
@@ -17,13 +14,15 @@ class MessageProcess implements MessageComponentInterface
 {
     private $logger;
     private $dispatcher;
-
-    public function __construct(LoggerInterface $logger, EventDispatcherInterface $dispatcher)
-    {
+    
+    public function __construct(
+        LoggerInterface $logger,
+        EventDispatcherInterface $dispatcher
+    ) {
         $this->logger = $logger;
         $this->dispatcher = $dispatcher;
     }
-
+    
     /**
      * When a new connection is opened it will be passed to this method
      * @param  ConnectionInterface $conn The socket/connection that just connected to your application
@@ -33,9 +32,10 @@ class MessageProcess implements MessageComponentInterface
     {
         $openEvent = new OpenEvent($conn);
         $this->dispatcher->dispatch(OpenEvent::NAME, $openEvent);
-        $this->logger->info(sprintf('Connection open of : %s', $conn->resourceId));
+        $this->logger->info(sprintf('Connection open of : %s',
+            $conn->resourceId));
     }
-
+    
     /**
      * This is called before or after a socket is closed (depends on how it's closed).  SendMessage to $conn will not result in an error if it has already been closed.
      * @param  ConnectionInterface $conn The socket/connection that is closing/closed
@@ -50,7 +50,7 @@ class MessageProcess implements MessageComponentInterface
             $conn->resourceId
         ));
     }
-
+    
     /**
      * If there is an error with one of the sockets, or somewhere in the application where an Exception is thrown,
      * the Exception is sent back down the stack, handled by the Server and bubbled back up the application through this method
@@ -65,11 +65,14 @@ class MessageProcess implements MessageComponentInterface
         $this->logger->alert(sprintf(
             "an exception is throw by %s with message : %s ",
             $conn->resourceId,
-            json_encode(['message' => $e->getMessage(), 'code' => $e->getCode()])
+            json_encode([
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
+            ])
         ));
-
+        
     }
-
+    
     /**
      * Triggered when a client sends data through the socket
      * @param  \Ratchet\ConnectionInterface $from The socket/connection that sent the message to your application

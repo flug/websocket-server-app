@@ -1,8 +1,5 @@
 <?php
-
-
 namespace Clooder\Subscriber;
-
 
 use Clooder\Event\CloseEvent;
 use Clooder\Event\ErrorEvent;
@@ -12,7 +9,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class SocketSubscriber implements EventSubscriberInterface
 {
-
     /**
      * Returns an array of event names this subscriber wants to listen to.
      *
@@ -35,24 +31,29 @@ class SocketSubscriber implements EventSubscriberInterface
     {
         return [
             MessageEvent::NAME => "onMessageReceived",
-            ErrorEvent::NAME =>"onErrorReceived",
+            ErrorEvent::NAME => "onErrorReceived",
             CloseEvent::NAME => "onClose",
-            OpenEvent::NAME => "onOpen"
+            OpenEvent::NAME => "onOpen",
         ];
     }
-
-    public function onMessageReceived(MessageEvent $event){
-
+    
+    public function onMessageReceived(MessageEvent $event)
+    {
+        
     }
-
-    public function onErrorReceived(ErrorEvent $event){
-
+    
+    public function onErrorReceived(ErrorEvent $event)
+    {
+        
     }
-
-    public function onClose(CloseEvent $event){
-
+    
+    public function onClose(CloseEvent $event)
+    {
+        
     }
-    public function onOpen(OpenEvent $event){
-
+    
+    public function onOpen(OpenEvent $event)
+    {
+        
     }
 }
