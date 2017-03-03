@@ -1,4 +1,5 @@
 <?php
+
 namespace Clooder\Event;
 
 use Ratchet\ConnectionInterface;
@@ -8,14 +9,14 @@ class ErrorEvent extends Event
 {
     private $conn;
     private $exception;
-    const NAME = "on.error";
-    
+    const NAME = 'on.error';
+
     public function __construct(ConnectionInterface $connection, \Exception $e)
     {
         $this->conn = $connection;
         $this->exception = $e;
     }
-    
+
     /**
      * @return ConnectionInterface
      */
@@ -23,18 +24,19 @@ class ErrorEvent extends Event
     {
         return $this->conn;
     }
-    
+
     /**
      * @param ConnectionInterface $conn
+     *
      * @return ErrorEvent
      */
     public function setConnection(ConnectionInterface $conn)
     {
         $this->conn = $conn;
-        
+
         return $this;
     }
-    
+
     /**
      * @return \Exception
      */
@@ -42,15 +44,16 @@ class ErrorEvent extends Event
     {
         return $this->exception;
     }
-    
+
     /**
      * @param \Exception $exception
+     *
      * @return ErrorEvent
      */
     public function setException(\Exception $exception)
     {
         $this->exception = $exception;
-        
+
         return $this;
     }
 }

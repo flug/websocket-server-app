@@ -1,4 +1,5 @@
 <?php
+
 namespace Clooder\Subscriber;
 
 use Clooder\Event\CloseEvent;
@@ -30,30 +31,26 @@ class SocketSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            MessageEvent::NAME => "onMessageReceived",
-            ErrorEvent::NAME => "onErrorReceived",
-            CloseEvent::NAME => "onClose",
-            OpenEvent::NAME => "onOpen",
+            MessageEvent::NAME => 'onMessageReceived',
+            ErrorEvent::NAME => 'onErrorReceived',
+            CloseEvent::NAME => 'onClose',
+            OpenEvent::NAME => 'onOpen',
         ];
     }
-    
+
     public function onMessageReceived(MessageEvent $event)
     {
-        
     }
-    
+
     public function onErrorReceived(ErrorEvent $event)
     {
-        
     }
-    
+
     public function onClose(CloseEvent $event)
     {
-        
     }
-    
+
     public function onOpen(OpenEvent $event)
     {
-        
     }
 }

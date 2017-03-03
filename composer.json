@@ -21,6 +21,7 @@
         "classmap": ["app/ConsoleKernel.php"]
     },
     "require-dev": {
-        "symfony/var-dumper": "^3.1"
+        "symfony/var-dumper": "^3.1",
+        "pedrotroller/php-cs-custom-fixer": "^1.6"
     }
 }

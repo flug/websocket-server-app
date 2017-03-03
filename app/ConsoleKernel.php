@@ -8,7 +8,7 @@ class ConsoleKernel
             new Clooder\Command\WebsocketCommand(),
         ];
     }
-    
+
     public static function getRootKernel()
     {
         return __DIR__;

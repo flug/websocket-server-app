@@ -1,4 +1,5 @@
 <?php
+
 namespace Clooder\Event;
 
 use Ratchet\ConnectionInterface;
@@ -8,14 +9,14 @@ class MessageEvent extends Event
 {
     private $conn;
     private $message;
-    const NAME = "on.message";
-    
+    const NAME = 'on.message';
+
     public function __construct(ConnectionInterface $conn, $msg)
     {
         $this->conn = $conn;
         $this->message = $msg;
     }
-    
+
     /**
      * @return ConnectionInterface
      */
@@ -23,18 +24,19 @@ class MessageEvent extends Event
     {
         return $this->conn;
     }
-    
+
     /**
      * @param ConnectionInterface $conn
+     *
      * @return MessageEvent
      */
     public function setConnection(ConnectionInterface $conn)
     {
         $this->conn = $conn;
-        
+
         return $this;
     }
-    
+
     /**
      * @return mixed
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace Clooder\Command;
 
 use Clooder\Process\MessageProcess;
@@ -21,15 +22,15 @@ class WebsocketCommand extends Command
     protected function configure()
     {
         $this->setName('socket')
-            ->addArgument('host', InputArgument::OPTIONAL, "host listener",
-                "localhost")
-            ->addArgument('port', InputArgument::OPTIONAL, "port listener",
+            ->addArgument('host', InputArgument::OPTIONAL, 'host listener',
+                'localhost')
+            ->addArgument('port', InputArgument::OPTIONAL, 'port listener',
                 8863)
             ->addOption('with-log', 'wl', InputOption::VALUE_OPTIONAL,
                 'stream logs default [true]', true)
         ;
     }
-    
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $dispatcher = new EventDispatcher();
@@ -49,18 +50,17 @@ class WebsocketCommand extends Command
         $output->writeln(sprintf(' // Executing chat socket on : %s : %s ',
             $input->getArgument('host'), $input->getArgument('port')));
         $server->run();
-        
     }
-    
+
     private function getLogger(InputInterface $input)
     {
-        if ((bool)$input->getOption('with-log')) {
+        if ((bool) $input->getOption('with-log')) {
             $logger = new Logger('websocket');
             $logger->pushHandler(new StreamHandler(\ConsoleKernel::getRootKernel() . '/../log/socket.log'));
         } else {
             $logger = new NullLogger();
         }
-        
+
         return $logger;
     }
 }
